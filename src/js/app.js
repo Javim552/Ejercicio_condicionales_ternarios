@@ -1,3 +1,4 @@
+import { left } from "@popperjs/core";
 import "../style/index.css";
 
 /**
@@ -33,14 +34,30 @@ function render(variables = {}) {
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1> ${variables.name == null ? " " : variables.name} ${
+    variables.lastname == null ? " " : variables.lastname
+  }</h1>
+          <h2>${variables.role == null ? " " : variables.role}</h2>
+          <h2>${variables.city == null ? " " : variables.city}</h2>
+          <h3>${variables.country == null ? " " : variables.country}</h3>
+          <ul class=" ${
+            variables.socialMediaPosition == "position-left"
+              ? "position-left"
+              : "position-right"
+          }">  
+          
+            <li><a href="${
+              variables.twitter == null ? " " : variables.twitter
+            }"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="${
+              variables.github == null ? "name" : variables.github
+            }"><i class="fab fa-github"></i></a></li>
+            <li><a href="${
+              variables.linkedin == null ? "name" : variables.linkedin
+            }"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="${
+              variables.instagram == null ? "name" : variables.instagram
+            }"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
@@ -61,7 +78,7 @@ window.onload = function() {
     socialMediaPosition: "position-left",
     // social media usernames
     twitter: null,
-    github: "alesanchezr",
+    github: null,
     linkedin: null,
     instagram: null,
     name: null,
